@@ -16,38 +16,49 @@ int main(int argc, const char * argv[])
 
     int number = 0;
     int numberArray[ARRAYLENGTH]={1,2,3,4,5,6,7,8,9};
-    int numberLength = 0;
+    int length = 0;
     //イテレータ
     int i,j;
     //入力データ
-    char inputChar[ARRAYLENGTH]="123456789";
-    //char inputSting[];
+    char inputCharArray[ARRAYLENGTH]="123456789";
     
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    printf("Password? > ");
+    //while(number != 880) {
     
-    while(number != 880) {
-        printf("Password? > ");
+    while(fgets(inputCharArray, ARRAYLENGTH, stdin) != NULL) {
+        //printf("Password? > ");
         //scanf("%c", &inputChar);
-        fgets(inputChar, ARRAYLENGTH, stdin);
-         //文字列からintに変更する
-        numberLength = sizeof(inputChar);
-        for (i = 0; i < numberLength; i++) {
-            printf("inputChar[%d] = %d\n",i,inputChar[i] );
+        
+        
+        //入力された文字数をカウントしてlengthに代入
+        length = sizeof(inputCharArray);
+        printf("length = %d \n",length);
+        //文字列判定をする
+        //文字列が数字でなければエラーをはく
+        
+        
+        
+        
+
+        
+        //デバッグ用コンソール出力
+        for (i = 0; i < length; i++) {
+            printf("inputCharArray[%d] = %d\n",i,inputCharArray[i] );
         }
-        for (i = 0; i < numberLength; i++) {
-            printf("initialNumberArray[%d] = %d\n",i,numberArray[i] );
+        for (i = 0; i < length; i++) {
+            printf("NumberArray[%d] = %d\n",i,numberArray[i] );
         }
 
         
-        for (i = 0; i < numberLength; i++) {
+        for (i = 0; i < length-1; i++) {
             //charからintへキャスト
-            
-            numberArray[i] = inputChar[i];
-            printf("numberArray[%d]=%d\n",i,numberArray[i]);
+            numberArray[i] = inputCharArray[i];
+            printf("CastedNumberArray[%d]=%d\n",i,numberArray[i]);
         }
         
         
-        if(numberArray[0] == 57 && numberArray[1] == 57 && numberArray[2] == 10) {
+        if(numberArray[0] == 56 && numberArray[1] == 56 && numberArray[2] == 48) {
             for (i=0; i<200; i++) {
                 for (j=0; j<250; j++) {
                     if (i < 50) {
@@ -74,7 +85,7 @@ int main(int argc, const char * argv[])
             
             
         } else {
-            printf("\nError. ");
+            printf("\nError. Password? > ");
                    //\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
                    
         }
