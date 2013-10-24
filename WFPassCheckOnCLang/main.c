@@ -32,11 +32,12 @@ int main(int argc, const char * argv[])
         
         
         //入力された文字数をカウントしてlengthに代入
+        //MARK:lengthがARRAYLENGTHで固定されている。
         length = sizeof(inputCharArray);
         printf("length = %d \n",length);
         //文字列判定をする
         //文字列が数字でなければエラーをはく
-        
+        //しかし未実装
         
         
         
