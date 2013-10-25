@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#define ARRAYLENGTH 10
+#define ARRAYLENGTH 100
 
 //#inclide <string.h>
 int main(int argc, const char * argv[])
@@ -16,56 +16,45 @@ int main(int argc, const char * argv[])
 
     int number = 0;
     int numberLength;
-    int k;
+    //boolean型が無いのでint型を利用する。
+    int hasInputNotASCII;
     //イテレータ
     int i,j;
-    
     //入力データ
     char inputChar;
     char inputCharArray[ARRAYLENGTH];
-    //char inputSting[];
+    
     
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    /*
-    printf("EOF = %d \n",EOF);
-    printf("'0' = %d \n",'0');
-    printf("'9' = %d \n",'9');
-    */
     printf("Password? > ");
+    
     while(number != 880) {
 
-
-        //入力文字をgetcharを利用して1文字ずつ取得する
-        //入力文字が半角数字の0~9でなければエラーを返して、入力し直すよう出力。
-        //さらに文字列の長さを計る
-        
-        //以下のwhileを実行する前にlengthを初期化
+        //lengthと真偽値を初期化
         numberLength = 0;
-        k = 0;
-        
-        //TODO:ループ判定に改行コードを使用しているので複数の数字以外文字列を入力した時にエラーが起こる
-        //　　　ループ判定部分に変更を加える事
+        hasInputNotASCII = 0;
+
+        //入力文字をgetcharを利用して改行コードまで1文字ずつ取得する
+        //取得した入力文字が半角数字の0~9であるかどうかを判定。
+        //さらに文字列の長さを計る
         while ((inputChar = getchar()) != '\n') {
             
-            printf("in while, inputChar = %c.inputCharNumber = %d \n",inputChar,inputChar);
+            //printf("in while, inputChar = %c.inputCharNumber = %d \n",inputChar,inputChar);
             
-            if ((inputChar < '0' || inputChar > '9') && inputChar != '\n') {
-                //printf("入力可能な文字列は半角数字のみです\n");
-                //break;
-                k = 1;
+            if ((inputChar < '0' || inputChar > '9')) {
+                //入力値が半角数字以外だった場合
+                hasInputNotASCII = 1;
             }else{
                 inputCharArray[numberLength] = inputChar;
-                printf("inputCharArray[%d] = %c \n",numberLength,inputCharArray[numberLength]);
+                //printf("inputCharArray[%d] = %c \n",numberLength,inputCharArray[numberLength]);
                 numberLength++;
             }
         }
         
-        printf("whileによる文字読み取り終了\n");
-        if (k==1) {
-            printf("入力可能な文字列は半角数字のみです");
-        }
+        //printf("whileによる文字読み取り終了\n");
         
-        if(inputCharArray[0] == '8' && inputCharArray[1] == '8' && inputCharArray[2] == '0') {
+        //if文の条件にhasInputNotASCIIの判定を追加
+        if((inputCharArray[0] == '8' && inputCharArray[1] == '8' && inputCharArray[2] == '0') && hasInputNotASCII == 0) {
             for (i=0; i<200; i++) {
                 for (j=0; j<250; j++) {
                     if (i < 50) {
@@ -91,13 +80,13 @@ int main(int argc, const char * argv[])
             
             
             
-        } else if(inputCharArray[numberLength] == '\n'){
-            printf("追加if文侵入");
-            break;
         }else{
-            printf("\nError.Password? > ");
-                   //\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
-                   
+            printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            //半角数字以外が入力値にあった場合の挙動
+            if (hasInputNotASCII==1) {
+                printf("WARNING:INPUT ONLY ASCII CODE!!!\n");
+            }
+            printf("Error.Password? > ");
         }
     }
     return 0;
