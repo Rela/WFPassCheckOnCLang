@@ -15,39 +15,51 @@ int main(int argc, const char * argv[])
 {
 
     int number = 0;
-    int numberArray[ARRAYLENGTH]={1,2,3,4,5,6,7,8,9};
-    int numberLength = 0;
+    int numberLength;
     //イテレータ
     int i,j;
+    
     //入力データ
-    char inputChar[ARRAYLENGTH]="123456789";
+    char inputChar;
+    char inputCharArray[ARRAYLENGTH];
     //char inputSting[];
     
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    
+    /*
+    printf("EOF = %d \n",EOF);
+    printf("'0' = %d \n",'0');
+    printf("'9' = %d \n",'9');
+    */
     while(number != 880) {
         printf("Password? > ");
-        //scanf("%c", &inputChar);
-        fgets(inputChar, ARRAYLENGTH, stdin);
-         //文字列からintに変更する
-        numberLength = sizeof(inputChar);
-        for (i = 0; i < numberLength; i++) {
-            printf("inputChar[%d] = %d\n",i,inputChar[i] );
-        }
-        for (i = 0; i < numberLength; i++) {
-            printf("initialNumberArray[%d] = %d\n",i,numberArray[i] );
-        }
 
+        //入力文字をgetcharを利用して1文字ずつ取得する
+        //入力文字が半角数字の0~9でなければエラーを返して、入力し直すよう出力。
+        //さらに文字列の長さを計る
         
-        for (i = 0; i < numberLength; i++) {
-            //charからintへキャスト
+        //以下のwhileを実行する前にlengthを初期化
+        numberLength = 0;
+        
+        //TODO:ループ判定に改行コードを使用しているので複数の数字以外文字列を入力した時にエラーが起こる
+        //　　　ループ判定部分に変更を加える事
+        while ((inputChar = getchar()) != '\n') {
             
-            numberArray[i] = inputChar[i];
-            printf("numberArray[%d]=%d\n",i,numberArray[i]);
+            printf("in while, inputChar = %c.inputCharNumber = %d \n",inputChar,inputChar);
+            
+            if (inputChar < '0' || inputChar > '9') {
+                printf("入力可能な文字列は半角数字のみです\n");
+                //このbreakがうまく働いていない
+                break;
+            }else{
+                inputCharArray[numberLength] = inputChar;
+                printf("inputCharArray[%d] = %c \n",numberLength,inputCharArray[numberLength]);
+                numberLength++;
+            }
         }
         
+        printf("whileによる文字読み取り終了");
         
-        if(numberArray[0] == 57 && numberArray[1] == 57 && numberArray[2] == 10) {
+        if(inputCharArray[0] == '8' && inputCharArray[1] == '8' && inputCharArray[2] == '0') {
             for (i=0; i<200; i++) {
                 for (j=0; j<250; j++) {
                     if (i < 50) {
