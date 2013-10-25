@@ -16,6 +16,7 @@ int main(int argc, const char * argv[])
 
     int number = 0;
     int numberLength;
+    int k;
     //イテレータ
     int i,j;
     
@@ -30,8 +31,9 @@ int main(int argc, const char * argv[])
     printf("'0' = %d \n",'0');
     printf("'9' = %d \n",'9');
     */
+    printf("Password? > ");
     while(number != 880) {
-        printf("Password? > ");
+
 
         //入力文字をgetcharを利用して1文字ずつ取得する
         //入力文字が半角数字の0~9でなければエラーを返して、入力し直すよう出力。
@@ -39,6 +41,7 @@ int main(int argc, const char * argv[])
         
         //以下のwhileを実行する前にlengthを初期化
         numberLength = 0;
+        k = 0;
         
         //TODO:ループ判定に改行コードを使用しているので複数の数字以外文字列を入力した時にエラーが起こる
         //　　　ループ判定部分に変更を加える事
@@ -46,10 +49,10 @@ int main(int argc, const char * argv[])
             
             printf("in while, inputChar = %c.inputCharNumber = %d \n",inputChar,inputChar);
             
-            if (inputChar < '0' || inputChar > '9') {
-                printf("入力可能な文字列は半角数字のみです\n");
-                //このbreakがうまく働いていない
-                break;
+            if ((inputChar < '0' || inputChar > '9') && inputChar != '\n') {
+                //printf("入力可能な文字列は半角数字のみです\n");
+                //break;
+                k = 1;
             }else{
                 inputCharArray[numberLength] = inputChar;
                 printf("inputCharArray[%d] = %c \n",numberLength,inputCharArray[numberLength]);
@@ -57,7 +60,10 @@ int main(int argc, const char * argv[])
             }
         }
         
-        printf("whileによる文字読み取り終了");
+        printf("whileによる文字読み取り終了\n");
+        if (k==1) {
+            printf("入力可能な文字列は半角数字のみです");
+        }
         
         if(inputCharArray[0] == '8' && inputCharArray[1] == '8' && inputCharArray[2] == '0') {
             for (i=0; i<200; i++) {
@@ -85,8 +91,11 @@ int main(int argc, const char * argv[])
             
             
             
-        } else {
-            printf("\nError. ");
+        } else if(inputCharArray[numberLength] == '\n'){
+            printf("追加if文侵入");
+            break;
+        }else{
+            printf("\nError.Password? > ");
                    //\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
                    
         }
