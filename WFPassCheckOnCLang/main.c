@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
         
         
         //入力された文字数をカウントしてlengthに代入
-        //MARK:lengthがARRAYLENGTHで固定されている。
+        //MARK:lengthがARRAYLENGTHで固定されている。880
         length = sizeof(inputCharArray);
         printf("length = %d \n",length);
         //文字列判定をする
@@ -42,7 +42,7 @@ int main(int argc, const char * argv[])
         
         
 
-        
+        /*
         //デバッグ用コンソール出力
         for (i = 0; i < length; i++) {
             printf("inputCharArray[%d] = %d\n",i,inputCharArray[i] );
@@ -50,12 +50,12 @@ int main(int argc, const char * argv[])
         for (i = 0; i < length; i++) {
             printf("NumberArray[%d] = %d\n",i,numberArray[i] );
         }
-
+         */
         
         for (i = 0; i < length-1; i++) {
             //charからintへキャスト
             numberArray[i] = inputCharArray[i];
-            printf("CastedNumberArray[%d]=%d\n",i,numberArray[i]);
+            //printf("CastedNumberArray[%d]=%d\n",i,numberArray[i]);
         }
         
         
